@@ -12,6 +12,19 @@ const CreatePost = () => {
     e.preventDefault()
     const formData = new FormData(e.target)
 
+    const image = formData.get('image')
+    const caption = formData.get('caption')
+
+    // ✅ Proper validation for image file
+    if (!image || image.size === 0) {
+      alert('Please select an image')
+      return
+    }
+    if (!caption || caption.trim() === '') {
+      alert('Please enter a caption')
+      return
+    }
+
     axios.post('http://localhost:3000/create-post', formData).then(response => {
       response.data
       navigate('./allpost')
