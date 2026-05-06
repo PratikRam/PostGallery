@@ -25,7 +25,6 @@ app.post('/create-post', upload.single('image'), async (req, res) => {
         message: 'Post created successfully',
         post
     });
-
 });
 
 app.get('/get-posts', async (req, res) => {
